@@ -240,12 +240,12 @@ e!c≡○Approx 0.5‿4‿0.4 RotateLocked camera3D
 •Out "(Low tests started"
 
 
-malloc ← @•FFI "*"‿"malloc"‿">u8"
+malloc ← @•FFI "*"‿"malloc"‿">usize"
 ⟨ReadI8, MakeUTF8, IsNull, null, F32ToI8, MakeF32, StrLen, GetFnsNeedingAlloc⟩ ← •Import "low.bqn"
 mem ← Malloc 100
 testChars ← "hello¨⍉𝕩!"∾@
 testBytes ← •ToUTF8 testChars
-(↕≠testBytes) (mem.Cast "u8").Write¨ testBytes-@
+(mem.Cast "i8:c8").WriteList testBytes
 
 ! testChars ≡ (≠testBytes) MakeUTF8 mem
 ! 0 = IsNull mem

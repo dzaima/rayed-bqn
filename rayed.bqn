@@ -652,7 +652,7 @@ clipboard ← {
   Get ⇐ {𝕤
     NeedsWindow@
     low.IsNull◶⟨
-      low.StrLen⊸low.MakeUTF8
+      low.ReadCharsTo0
       ""
     ⟩ raylib.GetClipboardText⟨⟩
   }
